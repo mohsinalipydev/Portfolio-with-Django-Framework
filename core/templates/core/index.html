@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ name }} | Portfolio</title>
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Animated background grid & glow -->
+    <div class="bg-grid"></div>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">MOHSIN<span>.ALI</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <p class="hero-greeting"><span class="dot"></span> AVAILABLE FOR WORK</p>
+            <h1 class="hero-title">{{ name }}</h1>
+            <h2 class="hero-role">{{ role }}</h2>
+            <p class="hero-tagline">{{ tagline }}</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-outline">Get In Touch</a>
+            </div>
+        </div>
+        <div class="hero-avatar">
+            <div class="avatar-ring">
+                <div class="avatar-circle">MA</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="section-heading">
+            <span class="tag">About Me</span>
+            <h2>Who I Am</h2>
+        </div>
+        <div class="about-content">
+            <p>
+                I'm a passionate developer with over 5 years of experience turning ideas into
+                functional, polished digital products. I specialize in building modern web
+                applications that are not only visually appealing but also fast, secure and
+                easy to maintain. I believe great software is a mix of clean code, thoughtful
+                design and genuine attention to detail.
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="section-heading">
+            <span class="tag">Skills</span>
+            <h2>What I Do</h2>
+        </div>
+        <div class="skills-grid">
+            {% for skill in skills %}
+            <div class="skill-card">
+                <div class="skill-icon">{{ skill.icon }}</div>
+                <h3>{{ skill.title }}</h3>
+                <p>{{ skill.desc }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="section-heading">
+            <span class="tag">Projects</span>
+            <h2>Featured Work</h2>
+        </div>
+        <div class="projects-grid">
+            {% for project in projects %}
+            <div class="project-card">
+                <div class="project-emoji">{{ project.emoji }}</div>
+                <h3>{{ project.title }}</h3>
+                <p>{{ project.desc }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-box">
+            <h2>Let's Work Together</h2>
+            <p>Have a project in mind or just want to say hello? I'd love to hear from you.</p>
+            <a href="mailto:{{ contact_email }}" class="btn btn-primary">{{ contact_email }}</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 {{ name }}. Built with Django.</p>
+    </footer>
+
+</body>
+</html>
